@@ -1,26 +1,46 @@
 {% extends 'visitors/base/index.html' %}
 
 {% block content %}
-<form method="post">
+<form method="post" action="{% url 'save_office' %}">
     {% csrf_token %}
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <input type="text" class="form-control" name="name" id="name" placeholder="Enter office name">
+          <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
         </div>
 
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter first name">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter last name">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="password1" id="password1" placeholder="Enter password">
+        </div>
+
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="password2" id="password2" placeholder="Repeat password">
+        </div>
       </div>
 
-      <div class="col-md-6">
+      {% comment %} <div class="col-md-6">
         <div class="form-group">
           <input type="date" class="form-control" name="created_on" id="created_on">
         </div>
         
-      </div>
+      </div> {% endcomment %}
       
       <div class="col-md-6">
         <div class="form-group has-danger">
-          <input type="button" id="save_office" value="save" class="btn btn-primary btn-outline" />
+          <input type="submit" value="save" class="btn btn-primary btn-outline" />
         </div>
       </div>
     </div>
