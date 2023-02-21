@@ -1,0 +1,100 @@
+{% extends 'avocado/base/index.html' %}
+{% load static%}
+{% block content %}
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="row">
+    <div class="title hidden">{% block title %}Visitors{% endblock %}</div>
+    <div class="title hidden">{% block header %}Visitors{% endblock %}</div>
+    <div class="title hidden">{% block page_header %}Visitors{% endblock %}</div>
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header pb-0">
+          <h6>visitors table</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-secondary text-xxs font-weight-bolder opacity-7">visitor first name</th>
+                  <th class="text-secondary text-xxs font-weight-bolder opacity-7 ps-2">visitor middle name</th>
+                  <th class="text-secondary text-xxs font-weight-bolder opacity-7 ps-2">visitor last name</th>
+                  <th class=" text-secondary text-xxs font-weight-bolder opacity-7">gender</th>
+                  <th class=" text-secondary text-xxs font-weight-bolder opacity-7">in time</th>
+                  <th class=" text-secondary text-xxs font-weight-bolder opacity-7">out time</th>
+                  <th class=" text-secondary text-xxs font-weight-bolder opacity-7">date visited</th>
+                  <th class=" text-secondary text-xxs font-weight-bolder opacity-7">office visited</th>
+                  <th class="text-secondary opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {% for visitor in visitors %}
+                <tr>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                      <div>
+                        <img src="{% static 'assets/img/team-2.jpg' %}" class="avatar avatar-sm me-3" alt="user1">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">{{visitor.first_name}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">{{visitor.middle_name}}</p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">{{visitor.last_name}}</p>
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    {% if visitor.gender == "MALE" %}
+                    <span class="badge badge-sm bg-gradient-secondary">male</span>
+                    {% elif visitor.gender == "FEMALE" %}
+                    <span class="badge badge-sm bg-gradient-success">female</span>
+                    {%else%}
+                    <b>Gender not set</b>
+                    {% endif %}
+                    
+                   
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{visitor.time_in}}</span>
+                  </td>
+                  {% if visitor.time_out %}
+                  <td class="align-middle text-center">
+                    <span class="text-secondary badge badge-sm bg-gradient-success text-white text-xs font-weight-bold">{% if visitor.gender == "MALE" %}he{% elif visitor.gender == "FEMALE" %}she{% endif %} get out at {{visitor.time_out}} </span>
+                  </td>
+                  {%else%}
+                  <td class="align-middle text-center">
+                    <span class="text-secondary badge badge-sm bg-gradient-danger text-white">{% if visitor.gender == "MALE" %}he{% elif visitor.gender == "FEMALE" %}she{% endif %} did'nt get out</span>
+                  </td>
+                  {% endif %}
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{visitor.date_visited}}</span>
+                  </td>
+                  <td class="align-middle">
+                    <span class="text-secondary text-xs font-weight-bold">{{visitor.office_visited}}</span>
+                  </td>
+                 
+                  <td class="align-middle">
+                    <a href="{% url 'delete_visitor' visitor.id %}" class="text-white btn btn-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      remove
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock content %}

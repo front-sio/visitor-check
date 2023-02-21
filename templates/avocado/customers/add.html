@@ -1,0 +1,31 @@
+{% extends 'avocado/base/index.html' %}
+{% load static%}
+{% block content %}
+<div class="col-md-6 col-lg-6 col-sm-12">
+    <form method="post" id="saveCustomer" action="{% url 'save_customer' %}">
+        {% csrf_token %}
+
+
+
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{form.as_p}}
+            </div>
+          </div>
+
+          
+    
+        
+          
+          <div class="">
+            <div class="form-group has-danger">
+              {% comment %} <input type="button"  value=""  /> {% endcomment %}
+              <button type="submit" id="" class="btn btn-primary btn-outline">Register</button>
+            </div>
+          </div>
+        </div>
+      </form>
+</div>
+{% endblock  %}

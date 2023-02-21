@@ -1,0 +1,28 @@
+{% extends 'visitors/base/index.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter office name">
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="date" class="form-control" name="created_on" id="created_on">
+        </div>
+        
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <input type="button" id="save_office" value="save" class="btn btn-primary btn-outline" />
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock content %}

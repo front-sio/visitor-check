@@ -1,0 +1,68 @@
+{% extends 'visitors/base/index.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'search_result' %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+            <input type="text" class="form-control" name="national_id" id="national_id" value="{{user_detail.NIN}}">
+        </div>
+
+         <div class="form-group">
+            <input type="text" class="form-control" value="{{user_detail.FirstName}}" name="first_name" id="firstname">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" value="{{user_detail.MiddleName}}" name="office" id="office">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" value="{{user_detail.LastName}}" name="last_name" id="lastname">
+          </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.DateofBirth}}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.NATIONALITY}}">
+          </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" value="{{office}}" name="office" id="office">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.Sex}}">
+        </div>
+
+
+        {% comment %} <div class="form-group">
+            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.Residentstreet}}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.Residentward}}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.Residentdistrict}}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" value="{{user_detail.Residentregion}}">
+        </div> {% endcomment %}
+      </div>
+
+      
+     
+    <div class="form-group has-danger">
+        <input type="submit" value="save" class="btn btn-primary btn-outline btn-block" />
+    </div>
+     
+    </div>
+  </form>
+{% endblock content %}

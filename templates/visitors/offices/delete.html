@@ -1,0 +1,23 @@
+{% extends 'visitors/base/index.html' %}
+
+{% block content %}
+<div class="col-md-4">
+    <h5>{% block title %}Are you sure you want to delete {{item}}{% endblock %}</h5>
+     <form action="" method="POST">
+         {% csrf_token %}
+         <div class="row">
+         <div class="col-md-3">
+            <a href="{% url 'offices' %}" class="btn btn-danger">No!</a><br>
+        </div>
+
+        <div class="col-md-3">
+            <div class="submit-form">
+                <input type="submit" class="btn btn-secondary" value="yes!">
+            </div>
+        </div>
+        </div>
+        
+     </form>
+ </div>
+
+{% endblock content %}
