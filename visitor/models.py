@@ -15,7 +15,7 @@ class Visitor(models.Model):
     date_of_birth = models.CharField(max_length=200, null=True, blank=True)
     visited_from = models.CharField(max_length=200, null=True, blank=True)
     time_in = models.TimeField(auto_now=True, null=True)
-    # time_out = models.TimeField(null=True)
+    time_out = models.TimeField(null=True, blank=True)
     date_visited = models.DateField(auto_now=True, null=True, blank=True)
     office_visited = models.CharField(max_length=200, null=True, blank=True)
     on_behalf = models.CharField(max_length=200, null=True, blank=True)
