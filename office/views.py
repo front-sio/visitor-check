@@ -8,6 +8,9 @@ from avocado.decorators import customer_only, allowed_user
 from office.forms import save_office_form, OfficeUpdateForm
 
 
+
+@login_required
+@customer_only
 def offices_view(request):
     offices = Office.objects.all().order_by('-created_on')[:10]
     print(offices)
@@ -25,6 +28,8 @@ def office_form(request):
     print(customer)
     return render(request, 'visitors/offices/office_forms.html')
 
+@login_required
+@customer_only
 def delete_office(request, pk):
     office = Office.objects.get(id = pk)
     if request.method == 'POST':
@@ -59,7 +64,8 @@ def delete_office(request, pk):
 #         return JsonResponse({'data': res})
 #     return JsonResponse({})
 
-
+@login_required
+@customer_only
 def save_office(request):
     if request.method== "POST":
         customer = request.user.customer
@@ -79,6 +85,9 @@ def save_office(request):
     return JsonResponse({})
 
 
+
+@login_required
+@customer_only
 def officeUpdate(request, pk):
     office = Office.objects.get(id = pk)
     form = OfficeUpdateForm(instance=office)
