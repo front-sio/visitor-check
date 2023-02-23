@@ -7,6 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 urlpatterns = [
-    path('', avocado_dashboard, name="rec_dashboard"),
+    path('', reception_dashboard, name="rec_dashboard"),
     
 ]
